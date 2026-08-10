@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: student-mgmt-system
+data:
+  # In production, DB_HOST points to the Amazon RDS endpoint (injected by Terraform output
+  # or External Secrets Operator). For local/dev, it points at the in-cluster mysql-service.
+  DB_HOST: "mysql-service"
+  DB_PORT: "3306"
+  DB_NAME: "studentdb"

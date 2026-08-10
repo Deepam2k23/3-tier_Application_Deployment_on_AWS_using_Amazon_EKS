@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+  namespace: student-mgmt-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: gp3   # EBS CSI storage class on EKS
+  resources:
+    requests:
+      storage: 10Gi
