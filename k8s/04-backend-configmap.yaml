@@ -6,6 +6,6 @@ metadata:
 data:
   # In production, DB_HOST points to the Amazon RDS endpoint (injected by Terraform output
   # or External Secrets Operator). For local/dev, it points at the in-cluster mysql-service.
-  DB_HOST: "mysql-service"
+  DB_HOST: "student-mgmt-system-mysql.c0hqackckvnz.us-east-1.rds.amazonaws.com"
   DB_PORT: "3306"
   DB_NAME: "studentdb"

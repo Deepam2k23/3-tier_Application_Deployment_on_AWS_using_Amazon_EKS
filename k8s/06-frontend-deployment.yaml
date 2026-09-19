@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: <ECR_REPO_URI>/sms-frontend:latest   # replace with your ECR image, pushed by Jenkins/CI-CD
+          image: 285849851869.dkr.ecr.us-east-1.amazonaws.com/sms-frontend:v2   # replace with your ECR image, pushed by Jenkins/CI-CD
           ports:
             - containerPort: 80
           resources:
@@ -35,6 +35,10 @@ kind: Service
 metadata:
   name: frontend-service
   namespace: student-mgmt-system
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
+    alb.ingress.kubernetes.io/success-codes: "200"
 spec:
   selector:
     app: frontend

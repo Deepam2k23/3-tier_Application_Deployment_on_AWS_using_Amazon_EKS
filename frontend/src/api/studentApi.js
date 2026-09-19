@@ -9,9 +9,9 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-export const getAllStudents = () => api.get('/');
+export const getAllStudents = () => api.get('');
 export const getStudentById = (id) => api.get(`/${id}`);
-export const createStudent = (student) => api.post('/', student);
+export const createStudent = (student) => api.post('', student);
 export const updateStudent = (id, student) => api.put(`/${id}`, student);
 export const deleteStudent = (id) => api.delete(`/${id}`);
 export const searchStudents = (keyword) => api.get(`/search`, { params: { keyword } });

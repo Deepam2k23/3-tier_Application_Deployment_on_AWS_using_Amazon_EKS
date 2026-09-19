@@ -1,18 +1,15 @@
-# ALB Ingress (via AWS Load Balancer Controller) - fronted by CloudFront + Route 53 + WAF
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: sms-ingress
   namespace: student-mgmt-system
   annotations:
-    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/healthcheck-path: /
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-    alb.ingress.kubernetes.io/certificate-arn: <ACM_CERT_ARN>
-    alb.ingress.kubernetes.io/wafv2-acl-arn: <WAF_WEB_ACL_ARN>
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
 spec:
+  ingressClassName: alb
   rules:
     - http:
         paths:
